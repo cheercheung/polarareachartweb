@@ -1,6 +1,7 @@
 from flask import Flask, send_file, request, jsonify
 from flask_cors import CORS
 import os
+import time
 
 # 获取当前文件的绝对路径目录
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -42,6 +43,16 @@ def generate_chart():
             "message": "Chart data received successfully"
         }), 200
         
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/_vercel/speed-insights/vitals', methods=['POST'])
+def collect_vitals():
+    try:
+        data = request.get_json()
+        # 这里可以添加数据处理逻辑
+        print("Performance Data:", data)
+        return jsonify({"success": True}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
