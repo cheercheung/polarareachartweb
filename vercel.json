@@ -5,8 +5,8 @@
         "use": "@vercel/python"
     }],
     "routes": [{
-            "src": "/_vercel/speed-insights/script\\.js",
-            "dest": "/_vercel/speed-insights/script.js"
+            "src": "/_vercel/insights/script.js",
+            "dest": "/_vercel/insights/script.js"
         },
         {
             "src": "/(.*)",
